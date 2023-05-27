@@ -60,7 +60,7 @@ public class SkuInfoEntity implements Serializable {
 	/**
 	 * 价格
 	 */
-	private BigDecimal price;
+	private Long price;
 	/**
 	 * 销量
 	 */

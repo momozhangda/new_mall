@@ -12,6 +12,9 @@
         <result property="skuName" column="sku_name"/>
         <result property="stockLocked" column="stock_locked"/>
     </resultMap>
+    <select id="getHasStockNum" resultType="java.lang.Integer">
+
+    </select>
 
 
 </mapper>

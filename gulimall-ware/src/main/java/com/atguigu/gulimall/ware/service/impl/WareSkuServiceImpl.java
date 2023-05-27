@@ -26,4 +26,11 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
         return new PageUtils(page);
     }
 
+    @Override
+    public Integer getHasStock(Long skuId) {
+
+        Integer stock = baseMapper.getHasStockNum(skuId);
+        return null;
+    }
+
 }

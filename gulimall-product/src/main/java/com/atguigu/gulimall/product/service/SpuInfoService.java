@@ -16,5 +16,8 @@ import java.util.Map;
 public interface SpuInfoService extends IService<SpuInfoEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+//    商品上架
+    void upPorduct(Long supId);
 }
 

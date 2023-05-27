@@ -5,11 +5,7 @@ import java.util.Map;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.atguigu.gulimall.ware.entity.WareSkuEntity;
 import com.atguigu.gulimall.ware.service.WareSkuService;
@@ -30,6 +26,19 @@ import com.atguigu.common.utils.R;
 public class WareSkuController {
     @Autowired
     private WareSkuService wareSkuService;
+
+    /*
+    * 查看是否还有库存
+    * */
+
+    @GetMapping("/hasstock/{skuId}")
+    public Boolean hasStock(@PathVariable Long skuId){
+
+        Integer stock = wareSkuService.getHasStock(skuId);
+
+        return null;
+    }
+
 
     /**
      * 列表

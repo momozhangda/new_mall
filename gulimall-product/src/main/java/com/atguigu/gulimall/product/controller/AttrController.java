@@ -3,6 +3,10 @@ package com.atguigu.gulimall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.atguigu.gulimall.product.vo.AttrInfoVo;
+import com.atguigu.gulimall.product.vo.AttrRespVo;
+import com.atguigu.gulimall.product.vo.AttrVo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,6 +43,17 @@ public class AttrController {
 
         return R.ok().put("page", page);
     }
+    @RequestMapping("sale/list/{catelogId}")
+    public R saleList(@RequestParam Map<String, Object> params,@PathVariable("catelogId") Long catelogId){
+        PageUtils attrRespVo = attrService.getSaleList(params,catelogId);
+        return R.ok().put("page",attrRespVo);
+    }
+
+    @RequestMapping("base/list/{catelogId}")
+    public R baseList(@RequestParam Map<String, Object> params ,@PathVariable("catelogId") Long catelogId){
+        PageUtils pageUtils = attrService.queryBsePage(params, catelogId);
+        return R.ok().put("page",pageUtils);
+    }
 
 
     /**
@@ -46,17 +61,17 @@ public class AttrController {
      */
     @RequestMapping("/info/{attrId}")
     public R info(@PathVariable("attrId") Long attrId){
-		AttrEntity attr = attrService.getById(attrId);
+        AttrInfoVo attrInfoVo = attrService.getInfoById(attrId);
 
-        return R.ok().put("attr", attr);
+        return R.ok().put("attr", attrInfoVo);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody AttrEntity attr){
-		attrService.save(attr);
+    public R save(@RequestBody AttrVo attrVo){
+		attrService.saveAttrVo(attrVo);
 
         return R.ok();
     }
